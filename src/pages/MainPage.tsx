@@ -7,7 +7,7 @@ export default function MainPage(){
     console.log(pokemons);
     
     if (loading){
-
+        return <div className="my-auto text-center">Loading the pokemons...</div>
     }
 
     return (

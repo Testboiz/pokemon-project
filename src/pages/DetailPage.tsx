@@ -7,7 +7,7 @@ export function DetailPage(){
     const {loading, pokemon} = useDetailPokemonFetch(id);
 
     if (loading){
-        return <></>
+        return <div className="my-auto text-center">Fetching pokemon data...</div>
     }
 
     return  (

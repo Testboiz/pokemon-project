@@ -7,6 +7,10 @@ export default function CaughtPage(){
     const navigate = useNavigate();
     const [pokemons, setPokemons] = useState<Pokemon[]>(PokedexService.getAll());
 
+    if (pokemons.length === 0){
+        return <div className="my-auto text-center">No pokemons yet, catch them all!</div>
+    }
+
     return (
         <div className="grid grid-cols-2 gap-4">
             {pokemons.map((pokemon) => {

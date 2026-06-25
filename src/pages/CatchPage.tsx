@@ -19,10 +19,9 @@ export default function CatchPage(){
       }
     }
 
-    if(loading){
-      return <></>
-    }
-
+    if (loading){
+      return <div className="my-auto text-center">Loading battlegrround...</div>
+  }
     return (
         <>
           <div className="flex flex-1 flex-col justify-between bg-gray-100 -mx-4 -mt-4 -mb-4 p-4 bg-cover bg-no-repeat bg-center bg-[url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrTe_F4yIwOZUfocG4i5NZ__bMqQr5RSRUaTbe_E9dtjAqNSB3T98nlfaf&s=10')]">
@@ -44,14 +43,17 @@ export default function CatchPage(){
           <div className="bg-white border-black border-4 p-4 text-center">
             <p>You've caught {pokemon.name}!</p>
             <p>Give it a name!</p>
+            
+            <div className="nes-field">
             <input 
               type="text" 
-              className="my-2 border-black border-2" 
+              className="my-2 border-black border-2 nes-input" 
               placeholder="Pika"
               value={value}
               onChange={(e) => setValue(e.target.value)}
               />
-            <button className="flex flex-col w-full bg-red-500 border-2 border-black rounded py-2"
+            </div>
+            <button className="nes-btn is-error bg-red-500"
               onClick={() => {
                 const namedPokemon = PokedexService.setName(pokemon, value)
                 PokedexService.create(namedPokemon);
@@ -63,7 +65,7 @@ export default function CatchPage(){
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4" hidden={!runAway}>
           <div className="bg-white border-black border-4 p-4 text-center">
             <p>The {pokemon.name} run away!</p>
-            <button className="flex flex-col w-full bg-red-500 border-2 border-black rounded py-2" onClick={() => setRunAway(false)}> Try Again</button>
+            <button className="nes-btn is-error bg-red-500" onClick={() => setRunAway(false)}> Try Again</button>
           </div>
         </div>
         </>
