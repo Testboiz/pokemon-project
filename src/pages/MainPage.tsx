@@ -1,60 +1,25 @@
+import { useNavigate } from "react-router"
+import usePokemonFetch from "../hooks/usePokemonFetch";
+
 export default function MainPage(){
+    const navigate = useNavigate();
+    const {pokemons, loading} = usePokemonFetch();
+    console.log(pokemons);
+    
+    if (loading){
+
+    }
+
     return (
         <div className="grid grid-cols-2 gap-4">
-            <div className="border-4 border-black">
-            <div className="flex flex-col p-2">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/1.gif" alt="Bulba" />
-                <p className="text-center mt-4 mb-2">Bulbasaur</p>
-            </div>
-            </div>
-            <div className="border-4 border-black">
-            <div className="flex flex-col p-2">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/1.gif" alt="Bulba" />
-                <p className="text-center mt-4 mb-2">Bulbasaur</p>
-            </div>
-            </div>
-            <div className="border-4 border-black">
-            <div className="flex flex-col p-2">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/1.gif" alt="Bulba" />
-                <p className="text-center mt-4 mb-2">Bulbasaur</p>
-            </div>
-            </div>
-            <div className="border-4 border-black">
-            <div className="flex flex-col p-2">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/1.gif" alt="Bulba" />
-                <p className="text-center mt-4 mb-2">Bulbasaur</p>
-            </div>
-            </div>
-            <div className="border-4 border-black">
-            <div className="flex flex-col p-2">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/1.gif" alt="Bulba" />
-                <p className="text-center mt-4 mb-2">Bulbasaur</p>
-            </div>
-            </div>
-            <div className="border-4 border-black">
-            <div className="flex flex-col p-2">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/1.gif" alt="Bulba" />
-                <p className="text-center mt-4 mb-2">Bulbasaur</p>
-            </div>
-            </div>
-            <div className="border-4 border-black">
-            <div className="flex flex-col p-2">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/1.gif" alt="Bulba" />
-                <p className="text-center mt-4 mb-2">Bulbasaur</p>
-            </div>
-            </div>
-            <div className="border-4 border-black">
-            <div className="flex flex-col p-2">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/1.gif" alt="Bulba" />
-                <p className="text-center mt-4 mb-2">Bulbasaur</p>
-            </div>
-            </div>
-            <div className="border-4 border-black">
-            <div className="flex flex-col p-2">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/1.gif" alt="Bulba" />
-                <p className="text-center mt-4 mb-2">Bulbasaur</p>
-            </div>
-            </div>
+            {pokemons.map(pokemons => {
+                return (
+                    <div key={"pokemon-" + pokemons.id} className="flex flex-col p-2" onClick={() => navigate(`/detail/${pokemons.id}`)}>
+                        <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${pokemons.id}.gif`} alt={pokemons.name} />
+                        <p className="text-center mt-4 mb-2">{pokemons.name}</p>
+                    </div>
+                )
+            })}
         </div>
     )
 }

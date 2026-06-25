@@ -7,11 +7,11 @@ export const PokedexService = {
       return JSON.parse(localStorage.getItem(KEY) ?? "[]") as Pokemon[];
     },
 
-    convert(rawPokemon: Map<String, any>, petName: string) : Pokemon{
+    convert(rawPokemon: Map<String, any>) : Pokemon{
         return {
             id: rawPokemon['id'],
             name: rawPokemon["name"],
-            petName: petName,
+            petName: "",
             weight: rawPokemon["weight"],
             height: rawPokemon["height"],
             abilities: rawPokemon["abilities"].map((ability: any) => ability.ability.name),
@@ -30,6 +30,11 @@ export const PokedexService = {
       const pokemons = this.getAll();
       pokemons.push(pokemonToAdd);
       localStorage.setItem(KEY, JSON.stringify(pokemons));
+    },
+
+    setName(pokemonToSet: Pokemon, name: string){
+      pokemonToSet.petName = name;
+      return pokemonToSet;
     },
   
     getById(id: number) {

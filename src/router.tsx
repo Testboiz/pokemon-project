@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
           element: <CaughtPage/>
         },
         {
-          path: "/catch",
+          path: "/catch/:id",
           element: <CatchPage/>
         },
       ],

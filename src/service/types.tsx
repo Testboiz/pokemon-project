@@ -14,3 +14,9 @@ export type Pokemon = {
     frontGifUrl: string;
     frontImageUrl: string;
 }
+
+export type DisplayOnlyPokemon = {
+    id: number;
+    name: string;
+    url: string;
+}
