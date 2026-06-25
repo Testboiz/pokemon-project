@@ -19,7 +19,7 @@ export function DetailPage(){
                     className="w-48 h-48"    
                 />
                 <div className="flex flex-col gap-2">
-                    {pokemon.types.map((type, index) => <div key={"ability-" + index} className="border-2 border-black bg-red-500 rounded-full px-2 text-center">{type}</div>)}
+                    {pokemon.types.map((type, index) => <div key={"ability-" + index} className=" bg-red-500 px-2 py-1 text-center nes-container is-rounded text-white [border-image:none]">{type}</div>)}
                 </div>
             </div>
             <div className="p-4 border-4 border-black">
@@ -62,7 +62,7 @@ export function DetailPage(){
                     {pokemon.moves.slice(0,5).map((move) => <li>{move}</li>)}
                 </ul>
             </div>
-                <button className="col-span-2 mx-auto  px-4 my-2 rounded-full bg-red-500 border-4 border-black text-center hover:ring-4 ring-red-500 transition"
+                <button className="nes-btn is-error bg-red-500 col-span-2"
                         onClick={() => navigate("/catch/" + pokemon.id)}>
                     Catch em!
                 </button>          

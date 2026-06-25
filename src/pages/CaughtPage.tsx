@@ -25,8 +25,13 @@ export default function CaughtPage(){
                         </button>
                         <div className="flex flex-col p-2">
                             <img className="inline-block w-50 h-50" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${pokemon.id}.gif`} alt={pokemon.name} />
-                            <p className="text-center mt-4 ">{pokemon.name}</p>
-                            <p className="text-center mb-2">{pokemon.petName}</p>
+                            <div className="pt-2">
+                                <p className="text-center mb-0">[{pokemon.name}]</p>
+                                {pokemon.petName !== "" && (<>
+                                    <p className="text-center mt-0">{pokemon.petName}</p>
+                                </>)
+                                }
+                            </div>
                         </div>
                     </div>
                 )

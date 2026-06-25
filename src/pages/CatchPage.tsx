@@ -36,8 +36,8 @@ export default function CatchPage(){
                   />
   
             <div className="flex justify-around">
-              <div className="bg-red-500 border-4 border-black rounded p-4" onClick={() => catchLogic()}>Catch</div>
-              <div className="bg-red-500 border-4 border-black rounded p-4" onClick={() => navigate("/detail/" + pokemon.id)}>Run Away</div>
+              <button className="nes-btn is-error bg-red-500" onClick={() => catchLogic()}>Catch</button>
+              <button className="nes-btn is-error bg-red-500" onClick={() => navigate("/detail/" + pokemon.id)}>Run Away</button>
           </div>
         </div>
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4" hidden={!caught}>

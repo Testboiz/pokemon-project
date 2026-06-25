@@ -4,3 +4,7 @@
 body {
   font-family: 'Press Start 2P', system-ui, sans-serif;
 }
+
+@layer base {
+    @import "nes.css/css/nes.min.css";
+  }
