@@ -24,7 +24,7 @@ export default function CaughtPage(){
                             X
                         </button>
                         <div className="flex flex-col p-2">
-                            <img className="w-50 h-50" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${pokemon.id}.gif`} alt={pokemon.name} />
+                            <img className="inline-block w-50 h-50" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${pokemon.id}.gif`} alt={pokemon.name} />
                             <p className="text-center mt-4 ">{pokemon.name}</p>
                             <p className="text-center mb-2">{pokemon.petName}</p>
                         </div>
