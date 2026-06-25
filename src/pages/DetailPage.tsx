@@ -20,8 +20,6 @@ export function DetailPage(){
                 />
                 <div className="flex flex-col gap-2">
                     {pokemon.types.map((type, index) => <div key={"ability-" + index} className="border-2 border-black bg-red-500 rounded-full px-2 text-center">{type}</div>)}
-                    {/* <div className="border-2 border-black bg-red-500 rounded-full px-2 text-center">abc</div>
-                    <div className="border-2 border-black bg-red-500 rounded-full px-2 text-center">abc</div> */}
                 </div>
             </div>
             <div className="p-4 border-4 border-black">
