@@ -1,8 +1,9 @@
 import API from "./api";
 
-export async function getAllPokemons(){
+export async function getAllPokemons(page = 0){
+    const paginationSize = 20;
     try {
-        const response = await API.get("pokemon?limit=100");
+        const response = await API.get(`pokemon?offset=${page*paginationSize}&limit=20`);
         return response.data.results;
     } catch (error) {
         console.log(error)
