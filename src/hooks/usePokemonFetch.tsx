@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
-import { getAllPokemons, type DisplayOnlyPokemon, type DisplayOnlyPokemonResponse, type Pokemon } from "../service";
+import { getAllPokemons, type DisplayOnlyPokemon, type DisplayOnlyPokemonResponse } from "../service";
 
 export default function usePokemonFetch(page = 0){
     const [loading, setLoading] = useState<boolean>(true);
+    const [refetchLoading, setRefetchLoading] = useState<boolean>(false);
     const [pokemons, setPokemons] = useState<DisplayOnlyPokemon[]>([]);
     const [pokemonResponse, setPokemonResponse] = useState<DisplayOnlyPokemonResponse>();
 
     async function getPokemons() {
         try {
+            setRefetchLoading(true);
             const response = await getAllPokemons(page);
             if (response) {
                 setPokemonResponse(response);
@@ -24,12 +26,13 @@ export default function usePokemonFetch(page = 0){
             console.error(error);
         } finally {
             setLoading(false);
+            setRefetchLoading(false);
         }
     }
     useEffect(() => {
         getPokemons();
     }, [page]);
 
-    return {loading, pokemons, pokemonResponse}
+    return {loading, refetchLoading, pokemons, pokemonResponse}
 
 }

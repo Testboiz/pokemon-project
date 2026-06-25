@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router";
 
 export default function GlobalLayout(){
@@ -6,6 +7,14 @@ export default function GlobalLayout(){
 
     const isHomePage = location.pathname === "/";
     const isCaughtPage = location.pathname === "/caught"
+
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+    const scrollToTop = () => {
+        if (scrollContainerRef.current) {
+            scrollContainerRef.current.scrollTop = 0;
+        }
+    };
     return (
         <main className="flex justify-center items-center bg-slate-950 h-screen select-none overflow-hidden">
             <div className="layout-container w-full h-full bg-white  md:min-w-[480px] md:max-w-[480px] flex flex-col">
@@ -14,8 +23,8 @@ export default function GlobalLayout(){
                         <i className="nes-pokeball scale-50 origin-top-left"></i>
                     </div>
                 </header>
-                <div className="flex-1 flex flex-col p-4 overflow-y-auto">
-                    <Outlet />
+                <div ref={scrollContainerRef} className="flex-1 flex flex-col p-4 overflow-y-auto">
+                    <Outlet context={{ scrollToTop }} />
                 </div>
                 <footer className="z-50 bg-red-500 sticky bottom-0 border-t-4 border-black pt-2 flex flex-row items-center justify-around text-white">
                     <div className="flex flex-col align-center" onClick={() => navigate("/")}>
