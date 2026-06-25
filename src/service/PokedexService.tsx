@@ -16,10 +16,12 @@ export const PokedexService = {
             height: rawPokemon["height"],
             abilities: rawPokemon["abilities"].map((ability: any) => ability.ability.name),
             moves: rawPokemon["moves"].map((move: any) => move.move.name),
-            skills: [{
-                name: "a",
-                value: 1,
-            }],
+            stats: rawPokemon["stats"].map((skill: any) => {
+              return {
+                name: skill["stat"]["name"],
+                value: skill["base_stat"],
+              }
+            }),
             types: rawPokemon["types"].map((type: any) => type.type.name),
             frontGifUrl: rawPokemon["sprites"]["other"]["showdown"]["front_default"],
             frontImageUrl: rawPokemon["sprites"]["other"]["dream_world"]["front_default"],

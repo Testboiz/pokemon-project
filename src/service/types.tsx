@@ -6,7 +6,7 @@ export type Pokemon = {
     height: number;
     abilities: string[];
     moves: string[];
-    skills: {
+    stats: {
         name: string;
         value: number;
     }[];

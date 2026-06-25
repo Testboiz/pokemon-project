@@ -23,32 +23,21 @@ export function DetailPage(){
                 </div>
             </div>
             <div className="p-4 border-4 border-black">
-                <div className="flex flex-col gap-2">
-                    <div className="px-2">
-                        <p>HP : 45</p>
-                        <div className="w-full bg-gray-200 rounded">
-                            <div className="h-2 bg-blue-600 rounded" style={{width:"65%"}}></div>
+                <div className="flex flex-col gap-2 px-2">
+                    {pokemon.stats.map((stat, index) => (
+                        <div key={"stat-"+index}>
+                            <p className="my-1">{stat.name} :</p>
+                            <progress className="nes-progress is-primary h-4 m-0" value={stat.value} max="100"></progress>
+                            <p className="my-1">{stat.value}</p>
                         </div>
-                    </div>
-                    <div className="px-2">
-                        <p>HP : 45</p>
-                        <div className="w-full bg-gray-200 rounded">
-                            <div className="h-2 bg-blue-600 rounded" style={{width:"65%"}}></div>
-                        </div>
-                    </div>
-                    <div className="px-2">
-                        <p>HP : 45</p>
-                        <div className="w-full bg-gray-200 rounded">
-                            <div className="h-2 bg-blue-600 rounded" style={{width:"65%"}}></div>
-                        </div>
-                    </div>
+                    ))}
                 </div>
 
             </div>
-            <div className="p-4 border-4 border-black col-span-2">
-                <p>Name : {pokemon.name}</p>
-                <p>Weight : {pokemon.height}</p>
-                <p>Height : {pokemon.weight}</p>
+            <div className="px-4 py-2 border-4 border-black col-span-2">
+                <p>Name &nbsp;&nbsp;: {pokemon.name}</p>
+                <p>Weight : {pokemon.height/10} m</p>
+                <p className="my-0">Height : {pokemon.weight/10} kg</p>
             </div>
             <div className="p-4 border-4 border-black">
                 <p>Abilities : </p>

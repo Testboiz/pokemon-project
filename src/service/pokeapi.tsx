@@ -2,7 +2,7 @@ import API from "./api";
 
 export async function getAllPokemons(){
     try {
-        const response = await API.get("pokemon?limit=20");
+        const response = await API.get("pokemon?limit=100");
         return response.data.results;
     } catch (error) {
         console.log(error)
