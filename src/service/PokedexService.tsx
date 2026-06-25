@@ -11,6 +11,7 @@ export const PokedexService = {
         return {
             id: rawPokemon['id'],
             name: rawPokemon["name"],
+            uniqueId: "",
             petName: "",
             weight: rawPokemon["weight"],
             height: rawPokemon["height"],
@@ -34,8 +35,9 @@ export const PokedexService = {
       localStorage.setItem(KEY, JSON.stringify(pokemons));
     },
 
-    setName(pokemonToSet: Pokemon, name: string){
+    setNameAndGenID(pokemonToSet: Pokemon, name: string){
       pokemonToSet.petName = name;
+      pokemonToSet.uniqueId = crypto.randomUUID();
       return pokemonToSet;
     },
   
@@ -57,8 +59,8 @@ export const PokedexService = {
       localStorage.setItem(KEY, JSON.stringify(pokemons));
     },
   
-    delete(id: number) {
-      const pokemons = this.getAll().filter((pokemon: Pokemon) => pokemon.id !== id);
+    delete(id: string) {
+      const pokemons = this.getAll().filter((pokemon: Pokemon) => pokemon.uniqueId !== id);
       localStorage.setItem(KEY, JSON.stringify(pokemons));
     },
   

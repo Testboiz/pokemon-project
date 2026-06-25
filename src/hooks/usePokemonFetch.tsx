@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
-import { getAllPokemons, type DisplayOnlyPokemon } from "../service";
+import { getAllPokemons, type DisplayOnlyPokemon, type DisplayOnlyPokemonResponse, type Pokemon } from "../service";
 
-export default function usePokemonFetch(){
+export default function usePokemonFetch(page = 0){
     const [loading, setLoading] = useState<boolean>(true);
     const [pokemons, setPokemons] = useState<DisplayOnlyPokemon[]>([]);
+    const [pokemonResponse, setPokemonResponse] = useState<DisplayOnlyPokemonResponse>();
 
     async function getPokemons() {
         try {
-            const response = await getAllPokemons();
+            const response = await getAllPokemons(page);
             if (response) {
-                setPokemons(response.map((pokemon : Omit<DisplayOnlyPokemon,"id">) => {
+                setPokemonResponse(response);
+                setPokemons(response.results.map((pokemon : Omit<DisplayOnlyPokemon, "id">) => {
                     return {
-                        "id": pokemon.url.match(/(?<=\/)\d+(?=\/?$)/)[0],
+                        "id": Number(pokemon.url.match(/(?<=\/)\d+(?=\/?$)/)[0]),
                         "name": pokemon.name,
                         "url": pokemon.url,
                     }
@@ -26,8 +28,8 @@ export default function usePokemonFetch(){
     }
     useEffect(() => {
         getPokemons();
-    }, []);
+    }, [page]);
 
-    return {loading, pokemons}
+    return {loading, pokemons, pokemonResponse}
 
 }

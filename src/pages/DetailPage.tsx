@@ -19,7 +19,7 @@ export function DetailPage(){
                     className="w-48 h-48"    
                 />
                 <div className="flex flex-col gap-2">
-                    {pokemon.types.map((type, index) => <div key={"ability-" + index} className=" bg-red-500 px-2 py-1 text-center nes-container is-rounded text-white [border-image:none]">{type}</div>)}
+                    {pokemon.types.map((type, index) => <div key={"stats-" + index} className=" bg-red-500 px-2 py-1 text-center nes-container is-rounded text-white [border-image:none]">{type}</div>)}
                 </div>
             </div>
             <div className="p-4 border-4 border-black">
@@ -42,13 +42,13 @@ export function DetailPage(){
             <div className="p-4 border-4 border-black">
                 <p>Abilities : </p>
                 <ul className="list-disc list-inside">
-                    {pokemon.abilities.slice(0,5).map((ability) => <li>{ability}</li>)}
+                    {pokemon.abilities.slice(0,5).map((ability, index) => <li key={`ability-${index}`}>{ability}</li>)}
                 </ul>
             </div>
             <div className="p-4 border-4 border-black">
             <p>Skills : </p>
                 <ul className="list-disc list-inside">
-                    {pokemon.moves.slice(0,5).map((move) => <li>{move}</li>)}
+                    {pokemon.moves.slice(0,5).map((move,index) => <li key={`move-${index}`}>{move}</li>)}
                 </ul>
             </div>
                 <button className="nes-btn is-error bg-red-500 col-span-2"

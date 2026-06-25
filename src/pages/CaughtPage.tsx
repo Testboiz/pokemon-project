@@ -15,13 +15,13 @@ export default function CaughtPage(){
         <div className="grid grid-cols-2 gap-4">
             {pokemons.map((pokemon) => {
                 return (
-                    <div className="relative border-4 border-black" onClick={() => navigate("/detail/" + pokemon.id)}>
+                    <div key={pokemon.uniqueId} className="relative border-4 border-black" onClick={() => navigate("/detail/" + pokemon.id)}>
                         <button
                             type="button"
                             className="absolute top-0 right-0 p-2 text-xl"
                             onClick={(e) => {
                                 e.stopPropagation();
-                                PokedexService.delete(pokemon.id);
+                                PokedexService.delete(pokemon.uniqueId);
                                 setPokemons(PokedexService.getAll())
                             }}
                         >

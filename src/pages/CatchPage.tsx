@@ -55,7 +55,7 @@ export default function CatchPage(){
             </div>
             <button className="nes-btn is-error bg-red-500"
               onClick={() => {
-                const namedPokemon = PokedexService.setName(pokemon, value)
+                const namedPokemon = PokedexService.setNameAndGenID(pokemon, value);
                 PokedexService.create(namedPokemon);
                 setCaught(false);
               }}

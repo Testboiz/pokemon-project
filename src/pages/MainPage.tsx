@@ -1,17 +1,26 @@
 import { useNavigate } from "react-router"
 import usePokemonFetch from "../hooks/usePokemonFetch";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function MainPage(){
     const navigate = useNavigate();
-    const {pokemons, loading} = usePokemonFetch();
-    const [page, setPage] = useState<number>(1);
+    const [page, setPage] = useState<number>(0);
+    const {pokemons, pokemonResponse, loading} = usePokemonFetch(page);
     const [hasPrev, setHasPrev] = useState<boolean>(false);
     const [hasNext, setHasNext] = useState<boolean>(false);
+
+    useEffect(() => {
+        if (!loading && pokemonResponse) {
+          setHasNext(pokemonResponse.next !== null);
+          setHasPrev(pokemonResponse.previous !== null);
+        }
+      }, [loading, pokemonResponse]);
+
     
     if (loading){
         return <div className="my-auto text-center">Loading the pokemons...</div>
     }
+
 
     return (
         <div className="grid grid-cols-2 gap-4">
@@ -24,12 +33,12 @@ export default function MainPage(){
                 )
             })}
             {hasPrev ? (
-                <button className="nes-btn is-error bg-red-500"> &lt;  </button>
+                <button className="nes-btn is-error bg-red-500" onClick={() => setPage(page-1)}> &lt;  </button>
             ) : (
                 <button className="nes-btn is-disabled" disabled> &lt;  </button>
             ) }
             {hasNext ? (
-                <button className="nes-btn is-error bg-red-500"> &gt;  </button>
+                <button className="nes-btn is-error bg-red-500" onClick={() => setPage(page+1)}> &gt;  </button>
             ) : (
                 <button className="nes-btn is-disabled" disabled> &gt;  </button>
             ) }
