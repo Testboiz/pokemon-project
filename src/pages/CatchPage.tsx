@@ -21,7 +21,13 @@ export default function CatchPage(){
 
     if (loading){
       return <div className="my-auto text-center">Loading battlegrround...</div>
-  }
+    }
+
+
+    if (pokemon === null || pokemon === undefined){
+      return <div className="my-auto text-center">You got teleported to an unknown wasteland, Click the Pokedex to return</div>
+    }
+    
     return (
         <>
           <div className="flex flex-1 flex-col justify-between bg-gray-100 -mx-4 -mt-4 -mb-4 p-4 bg-cover bg-no-repeat bg-center bg-[url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrTe_F4yIwOZUfocG4i5NZ__bMqQr5RSRUaTbe_E9dtjAqNSB3T98nlfaf&s=10')]">

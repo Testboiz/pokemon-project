@@ -10,6 +10,10 @@ export function DetailPage(){
         return <div className="my-auto text-center">Fetching pokemon data...</div>
     }
 
+    if (pokemon === null || pokemon === undefined){
+        return <div className="my-auto text-center">You got teleported to an unknown wasteland, Click the Pokedex to return</div>
+    }
+
     return  (
         <div className="grid grid-cols-2 gap-2">
             <div className="p-4 border-4 border-black">

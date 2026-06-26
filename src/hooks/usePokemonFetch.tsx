@@ -14,14 +14,16 @@ export default function usePokemonFetch(page = 0){
             const response = await getAllPokemons(page);
             if (response) {
                 setPokemonResponse(response);
-                setPokemons(response.results.map((pokemon : Omit<DisplayOnlyPokemon, "id">) => {
+                const mappedPokemons = (response.results ?? []).map((pokemon: Omit<DisplayOnlyPokemon, "id">) => {
+                    const match = pokemon.url.match(ID_REGEX);
                     return {
-                        "id": Number(pokemon.url.match(ID_REGEX)[0]),
+                        "id": match ? Number(match[0]) : 0,
                         "name": pokemon.name,
                         "url": pokemon.url,
-                    }
-                }));
-                
+                    };
+                });
+    
+                setPokemons(mappedPokemons);                
             }
         } catch (error) {
             console.error(error);
