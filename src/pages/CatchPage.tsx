@@ -6,6 +6,11 @@ import { PokedexService } from "../service/PokedexService";
 export default function CatchPage(){
     const navigate = useNavigate();
     const { id } = useParams<{ id: string }>();
+
+    if (id === null || id === undefined){
+      return <div className="my-auto text-center">You broke the spacetime!, return to your Pokedex!</div>
+    }
+    
     const {pokemon, loading} = useDetailPokemonFetch(id);
     const [runAway, setRunAway] = useState(false);
     const [caught, setCaught] = useState(false);

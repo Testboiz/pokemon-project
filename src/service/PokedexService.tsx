@@ -6,7 +6,7 @@ export const PokedexService = {
       return JSON.parse(localStorage.getItem(KEY) ?? "[]") as Pokemon[];
     },
 
-    convert(rawPokemon: Map<String, any>) : Pokemon{
+    convert(rawPokemon: Record<string, any>) : Pokemon{
         return {
             id: rawPokemon['id'],
             name: rawPokemon["name"],

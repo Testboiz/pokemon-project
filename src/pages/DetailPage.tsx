@@ -3,6 +3,11 @@ import useDetailPokemonFetch from "../hooks/useDetailPokemon";
 
 export function DetailPage(){
     const { id } = useParams<{ id: string }>();
+    
+    if (id === null || id === undefined){
+        return <div className="my-auto text-center">You broke the spacetime!, return to your Pokedex!</div>
+    }
+
     const navigate = useNavigate();
     const {loading, pokemon} = useDetailPokemonFetch(id);
 
