@@ -26,19 +26,22 @@ export default function GlobalLayout(){
                 <div ref={scrollContainerRef} className="flex-1 flex flex-col p-4 overflow-y-auto">
                     <Outlet context={{ scrollToTop }} />
                 </div>
-                <footer className="z-50 bg-red-500 sticky bottom-0 border-t-4 border-black pt-2 flex flex-row items-center justify-around text-white">
-                    <div className="flex flex-col align-center" onClick={() => navigate("/")}>
-                        <div className="w-12 h-12 overflow-visible mx-auto">
-                            <i className="nes-bulbasaur scale-50 origin-top-left"></i>
+                <footer className="z-50 bg-red-500 sticky bottom-0 border-t-4 border-black pt-2 flex flex-col items-center justify-around text-white">
+                    <div className="flex flex-row w-full justify-around">
+                        <div className="flex flex-col" onClick={() => navigate("/")}>
+                            <div className="w-12 h-12 overflow-visible mx-auto">
+                                <i className="nes-bulbasaur scale-50 origin-top-left"></i>
+                            </div>
+                            {isHomePage ? <p className="underline decoration-3">Pokedex</p> : <p>Pokedex</p>}
                         </div>
-                        {isHomePage ? <p className="underline decoration-3">Pokedex</p> : <p>Pokedex</p>}
-                    </div>
-                    <div className="flex flex-col align-center" onClick={() => navigate("/caught")}>
-                        <div className="w-12 h-12 overflow-visible mx-auto">
-                            <i className="nes-charmander scale-50 origin-top-left"></i>
+                        <div className="flex flex-col" onClick={() => navigate("/caught")}>
+                            <div className="w-12 h-12 overflow-visible mx-auto">
+                                <i className="nes-charmander scale-50 origin-top-left"></i>
+                            </div>
+                            {isCaughtPage? <p className="underline decoration-3">Your Pokemons</p> : <p>Your Pokemons</p>}
                         </div>
-                        {isCaughtPage? <p className="underline decoration-3">Your Pokemons</p> : <p>Your Pokemons</p>}
                     </div>
+                    <p>Copyright &copy; 2026 Testboiz</p>
                 </footer>
             </div>
         </main>
