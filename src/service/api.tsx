@@ -1,7 +1,8 @@
 import axios from "axios";
+import { BASE_URL } from "./constants";
 
 const API  = axios.create({
-    baseURL: "https://pokeapi.co/api/v2/"
+    baseURL: BASE_URL
 });
 
 API.interceptors.request.use((axiosConfig) => {

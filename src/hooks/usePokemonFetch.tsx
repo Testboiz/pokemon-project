@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAllPokemons, type DisplayOnlyPokemon, type DisplayOnlyPokemonResponse } from "../service";
+import {  ID_REGEX } from "../service/constants";
 
 export default function usePokemonFetch(page = 0){
     const [loading, setLoading] = useState<boolean>(true);
@@ -15,7 +16,7 @@ export default function usePokemonFetch(page = 0){
                 setPokemonResponse(response);
                 setPokemons(response.results.map((pokemon : Omit<DisplayOnlyPokemon, "id">) => {
                     return {
-                        "id": Number(pokemon.url.match(/(?<=\/)\d+(?=\/?$)/)[0]),
+                        "id": Number(pokemon.url.match(ID_REGEX)[0]),
                         "name": pokemon.name,
                         "url": pokemon.url,
                     }

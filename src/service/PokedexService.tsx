@@ -1,6 +1,5 @@
+import { KEY } from "./constants";
 import type { Pokemon } from "./types";
-
-const KEY = "POKEMON";
 
 export const PokedexService = {
     getAll() : Pokemon[]{

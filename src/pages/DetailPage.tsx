@@ -19,13 +19,13 @@ export function DetailPage(){
                     className="w-48 h-48"    
                 />
                 <div className="flex flex-col gap-2">
-                    {pokemon.types.map((type, index) => <div key={"stats-" + index} className=" bg-red-500 px-2 py-1 text-center nes-container is-rounded text-white [border-image:none]">{type}</div>)}
+                    {pokemon.types.map((type, index) => <div key={`stats-${index}`} className=" bg-red-500 px-2 py-1 text-center nes-container is-rounded text-white [border-image:none]">{type}</div>)}
                 </div>
             </div>
             <div className="p-4 border-4 border-black">
                 <div className="flex flex-col gap-2 px-2">
                     {pokemon.stats.map((stat, index) => (
-                        <div key={"stat-"+index}>
+                        <div key={`stat-${index}`}>
                             <p className="my-1">{stat.name} :</p>
                             <progress className="nes-progress is-primary h-4 m-0" value={stat.value} max="100"></progress>
                             <p className="my-1">{stat.value}</p>
@@ -52,7 +52,7 @@ export function DetailPage(){
                 </ul>
             </div>
                 <button className="nes-btn is-error bg-red-500 col-span-2"
-                        onClick={() => navigate("/catch/" + pokemon.id)}>
+                        onClick={() => navigate(`/catch/${pokemon.id}`)}>
                     Catch em!
                 </button>          
         </div>
